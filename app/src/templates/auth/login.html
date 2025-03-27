@@ -1,4 +1,5 @@
 {% extends './base.html' %}
+
 {% block miCSS %}
 <link
   href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
@@ -8,7 +9,20 @@
 
 {% block titulo %}Login{% endblock %}
 
-{% block cuerpo %} <form action="/login" method="POST">
+{% block cuerpo %}
+  <!-- Mensajes Flash -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+        {% for category, message in messages %}
+          <li class="alert alert-{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Formulario de Login -->
+  <form action="/login" method="POST">
     <!-- Username input -->
     <div data-mdb-input-init class="form-outline mb-4">
       <input type="text" id="form2Example1" class="form-control" name="username" />
@@ -38,31 +52,33 @@
     </div>
   
     <!-- Submit button -->
-    <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
+    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
   
     <!-- Register buttons -->
     <div class="text-center">
       <p>Not a member? <a href="#!">Register</a></p>
       <p>or sign up with:</p>
-      <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+      <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
         <i class="fab fa-facebook-f"></i>
       </button>
   
-      <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+      <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
         <i class="fab fa-google"></i>
       </button>
   
-      <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+      <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
         <i class="fab fa-twitter"></i>
       </button>
   
-      <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+      <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
         <i class="fab fa-github"></i>
       </button>
     </div>
   </form>  
+
   <script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"
-></script>
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"
+  ></script>
+
 {% endblock %}

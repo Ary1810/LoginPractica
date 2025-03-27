@@ -1,7 +1,11 @@
-from flask import Flask, redirect, render_template, request, url_for
-from Config import config   
+from flask import Flask, flash, redirect, render_template, request, url_for
+from flask_mysqldb import MySQL
+from Config import config 
+from models.ModelUsers import ModelUsers
+from models.entities.users import User
 
 app = Flask(__name__)
+db = MySQL(app)
 
 @app.route("/")
 def index():
@@ -21,6 +25,7 @@ def login():
         if _user == "admin" and _pass == "123":
             return redirect(url_for("home"))
         else:
+            flash("Acceso rechazado", "danger")
             return render_template("auth/login.html")
     else:
         return render_template("auth/login.html")
