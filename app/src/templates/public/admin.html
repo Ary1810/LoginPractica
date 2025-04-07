@@ -1,0 +1,9 @@
+{% extends './base.html' %}
+
+{% block cuerpo %}
+<p>Bienvenido</p> <h1>{{ current_user.fullname }}</h1>
+<p> Esta pagina es unicamente para <b>admins</b></p>
+<p> Multa por acceso sin autorizacion 50 UMAs</p>
+
+
+{%endblock%}

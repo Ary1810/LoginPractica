@@ -1,9 +1,9 @@
 class DevelopmentConfig:
     DEBUG = True
     SECRET_KEY = "qhrf$edjYTJ)*21nsThdK"
-    MYSQL_HOST = "localhost"
-    MYSQL_USER = "root"
-    MYSQL_PASSWORD = "_Taller$2020.01BD"
+    MYSQL_HOST = "127.0.0.1"
+    MYSQL_USER = "Python"
+    MYSQL_PASSWORD = "123"
     MYSQL_DB = "store"
 config = {"development": DevelopmentConfig}
 
